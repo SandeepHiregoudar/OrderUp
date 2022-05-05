@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+		.s1{
+			width:400px;
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+			border: 1px solid darkgrey;
+			border-radius: 5px;
+			margin-top: 100px;
+			background: white;
+			height: 625px;
+			}
+		h4.absolute{
+			background: #28698a; 
+			bottom: 50px;
+			color: white;
+			width:100%;
+			 height:40px;
+			 padding-top: 20px;
+			 margin-left: -15px;
+			margin-right: -15px;
+
+		}
+		.s2{
+			text-align: justify;
+			margin-left: 60px;
+			font-size: 18px;
+		}
+		.s3{
+			width: 250px;
+			border-radius: 5px;
+			height: 30px;
+			font-size: 15px;
+			border: 1px solid #ced4da;
+			border-left: 5px solid #a94442;
+			letter-spacing: 1px;
+			transition-property: border 2px solid #ced4da ;
+			
+
+		}
+		.s4{
+			background: #28698a; 
+			color: white; 
+			font-size: 15px;
+			 margin-bottom: 20px;
+			 border-radius: 5px;
+			 height: 40px;
+			 width: 100px;
+
+		}
+		.s5{
+			
+			background:#28698a ;
+			height: 100px;
+			margin-left: -15px;
+			margin-right: -15px;
+			margin-top: -15px;
+			margin-bottom: -70px;
+		}
+		.s3:hover{
+			border: 2px solid #ced4da;
+		}
+		.s6{
+			font-size: 30px;
+			font-style: italic;
+			margin-bottom: 30px;
+			margin-top: 30px;
+		}			
+		
+		body{
+    background-image: url('background.png');
+  }
+	</style>
+</head>
+
+<center>
+<body>
+	<div class="s5"></div>
+	<div class="s1">
+	<div class="s6"><caption><p style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">REGISTER</p></caption></div>
+	<div class="s2">
+	<span><i class="fa fa-user-o" style="font-size:31px"></i></span>
+	<input type="name" id="name" name="name" placeholder="Name" required="" class="s3"></div><br>
+	<div class="s2">
+	<span><i class="fa fa-envelope-o" style="font-size:27px"></i></span>
+	<input type="Email" id="email" name="Email" placeholder="Email" required="" class="s3"><br></div><br>
+	<div class="s2">
+	<span><i class="fa fa-phone" style="font-size:35px"></i></span>
+	<input type="phone Number" id="pno" name="Phone Number" placeholder="Phone Number" required="" class="s3"></div><br>
+	<div class="s2">
+	<span><i class="fa fa-lock" style="font-size:43px"></i></span>
+	<input type="password" id="password" name="pinnumber" placeholder="Password" required="" class="s3"><br><br></div>
+	<div class="s2">
+	<span><i class="fa fa-lock" style="font-size:43px"></i></span>
+	<input type="password" id="conpassword" name="pinnumber" placeholder="Confirm Password" required="" class="s3"><br><br></div>
+	<div class="s2">
+	<span><i class="fa fa-calendar" style="font-size:30px"></i></span>
+	<input type="date" id="dateofbirth" name="dob" placeholder="DOB" required="" class="s3"><br></div><br>
+	<!-- <div class="s2">
+	<input type="radio" name="gender" style="height: 18px; width: 18px;">
+	<span><i class="fa fa-male" style="font-size:30px"></i></span>
+	<label>Male /</label>
+	<input type="radio" name="gender" style="height: 18px; width: 18px;">
+	<span><i class="fa fa-female" style="font-size:30px"></i></span>
+    <label>Female</label></div><br> -->
+	<div class="s2">
+	<span><i class="fa fa-address-card-o" style="font-size:25px"></i></span>
+	<textarea placeholder="Address 1" id="add1" required="" class="s3"></textarea></div><br>
+	<div class="s2">
+	<span><i class="fa fa-address-card-o" style="font-size:25px"></i></span>
+	<textarea placeholder="Address 2" id="add2" required="" class="s3"></textarea></div><br>
+	
+	<!-- <center><button class="s4" id="submit">SUBMIT</button></center> -->
+	<input type="submit" id="submit" name="signup_submit" value="Submit" />
+</div>
+</div>
+</center>
+<h4></h4>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+<script src="./mail.js"></script>
+</body>
+<script type="module">
+	// Import the functions you need from the SDKs you need
+	import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
+	import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-analytics.js";
+	import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
+	import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-auth.js";
+
+
+	// TODO: Add SDKs for Firebase products that you want to use
+	// https://firebase.google.com/docs/web/setup#available-libraries
+  
+	// Your web app's Firebase configuration
+	// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+	const firebaseConfig = {
+	  apiKey: "AIzaSyDYXe3WVekv7kF8eDakaw0w-6K-vvyrOww",
+	  authDomain: "orderup-b873b.firebaseapp.com",
+	  databaseURL: "https://orderup-b873b-default-rtdb.firebaseio.com",
+	  projectId: "orderup-b873b",
+	  storageBucket: "orderup-b873b.appspot.com",
+	  messagingSenderId: "118102288251",
+	  appId: "1:118102288251:web:a8cd8e8e433ed0badbffde",
+	  measurementId: "G-ZFL64NZCLC"
+	};
+  
+	// Initialize Firebase
+	const app = initializeApp(firebaseConfig);
+	const analytics = getAnalytics(app);
+	const database = getDatabase(app);
+	const auth = getAuth();
+
+	submit.addEventListener('click',async (e) => 
+	{
+
+		var name = document.getElementById('name').value;
+		var email = document.getElementById('email').value
+		// var pno = document.getElementById('pno').value
+		var password = document.getElementById('password').value
+		// var conpass = document.getElementById('conpassword').value
+		// var dob = document.getElementById('dateofbirth').value
+		// var add1 = document.getElementById('add1').value
+		// var add2 = document.getElementById('add2').value
+
+		createUserWithEmailAndPassword(auth, email, password)
+  			.then((userCredential) => {
+    		// Signed in 
+    			const user = userCredential.user;
+
+				set(ref(database, 'users/' + user.uid),{
+					name: username,
+					email: email
+				})
+				alert('User created!')
+    			// ...
+  			})
+  			.catch((error) => {
+    			const errorCode = error.code;
+    			const errorMessage = error.message;
+
+				alert(errorMessage);
+    		// ..
+  			});
+
+			document.getElementById("registerForm").addEventListener("submit", submitForm);
+
+			function submitForm(e){
+				e.preventDefault();
+
+				var name = getElementById('name');
+				var conpass = document.getElementById('conpassword').value
+				var dob = document.getElementById('dateofbirth').value
+				var add1 = document.getElementById('add1').value
+				var add2 = document.getElementById('add2').value
+				var pno = document.getElementById('pno').value
+
+			}
+
+			const getElementById = (id) => {
+				return document.getElementById(id).value;
+			}
+	});
+
+  </script>
+
+</html>

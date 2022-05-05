@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<style type="text/css">
+		.s1{
+			width:450px;
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+			border: 1px solid darkgrey;
+			border-radius: 5px;
+			margin-top: 100px;
+			background: white;
+			height: 400px;
+			}
+		h4.absolute{
+			background: #28698a;
+			bottom: 50px;
+			color: white;
+			width:100%;
+			 height:40px;
+			 padding-top: 20px;
+			 margin-left: -15px;
+			margin-right: -15px;
+
+		}
+		.s2{
+			text-align: justify;
+			margin-left: 20px;
+			font-size: 18px;
+		}
+		.s3{
+			width: 350px;
+			border-radius: 5px;
+			height: 30px;
+			font-size: 15px;
+			border: 1px solid #ced4da;
+			border-left: 5px solid #a94442;
+			letter-spacing: 1px;
+			transition-property: border 2px solid #ced4da ;
+			
+
+		}
+		.s4{
+			background: #28698a; 
+			color: white; 
+			font-size: 15px;
+			 margin-bottom: 20px;
+			 border-radius: 5px;
+			 height: 40px;
+			 width: 100px;
+
+		}
+		.s5{
+			
+			background:#28698a ;
+			height: 100px;
+			margin-left: -15px;
+			margin-right: -15px;
+			margin-top: -15px;
+			margin-bottom: -10px;
+		}
+		.s3:hover{
+			border: 2px solid #ced4da;
+		}
+		.s6{
+			font-size: 30px;
+			font-style: italic;
+			margin-bottom: 50px;
+			margin-top: 30px;
+		}		
+		
+		body{
+    background-image: url('background.png');
+  }
+	</style>
+</head>
+
+<center>
+<body>
+	<!-- <div class="s5"></div>
+	<div class="s1">
+	<div class="s6"><caption>Login As Distributor</caption></div>
+	<div class="s2">
+	<label>Email-ID *</label><br>
+	<span><i class="fa fa-envelope-o" style="font-size:24px"></i></span>
+	<input type="text" name="Email" placeholder="Enter Your Email-ID" required="" class="s3" ></div><br>
+	<div class="s2"><label>Password *</label><br>
+	<span><i class="fa fa-unlock-alt" style="font-size:37px"></i></span>
+	<input type="password" name="pinnumber" placeholder="Enter Your Password" required="" class="s3"><br><br></div>
+	<center><input type="submit" id="login" name="login" value="Login" />
+	<a href="#" style="margin-left: 10px;">Forgot Password</a>
+	</center>
+	<label>Don't have an account?<a href="Register.html">Create Account</a></label> -->
+
+	<div class="s5"></div>
+	<div class="s1">
+	<div class="s6"><caption>Login As Distributor</caption></div>
+	<div class="s2">
+	<label>Email-ID *</label><br>
+	<span><i class="fa fa-envelope-o" style="font-size:24px"></i></span>
+	<input type="text" id="email" name="Email" placeholder="Enter Your Email-ID" required="" class="s3" ></div><br>
+	<div class="s2"><label>Password *</label><br>
+	<span><i class="fa fa-unlock-alt" style="font-size:37px"></i></span>
+	<input type="password" id="password" name="pinnumber" placeholder="Enter Your Password" required="" class="s3"><br><br></div>
+	<center><input type="submit" id="login" name="login" value="Login" />
+	<a href="#" style="margin-left: 10px;">Forgot Password</a>
+	</center>
+	<label>Don't have an account?<a href="Register.html">Create Account</a></label>
+
+</div>
+</center>
+<h4></h4>
+</body>
+<script type="module">
+	// Import the functions you need from the SDKs you need
+	import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
+	import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-analytics.js";
+	import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
+	import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged  } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-auth.js";
+
+
+	// TODO: Add SDKs for Firebase products that you want to use
+	// https://firebase.google.com/docs/web/setup#available-libraries
+  
+	// Your web app's Firebase configuration
+	// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+	const firebaseConfig = {
+	  apiKey: "AIzaSyDYXe3WVekv7kF8eDakaw0w-6K-vvyrOww",
+	  authDomain: "orderup-b873b.firebaseapp.com",
+	  databaseURL: "https://orderup-b873b-default-rtdb.firebaseio.com",
+	  projectId: "orderup-b873b",
+	  storageBucket: "orderup-b873b.appspot.com",
+	  messagingSenderId: "118102288251",
+	  appId: "1:118102288251:web:a8cd8e8e433ed0badbffde",
+	  measurementId: "G-ZFL64NZCLC"
+	};
+  
+	// Initialize Firebase
+	const app = initializeApp(firebaseConfig);
+	const analytics = getAnalytics(app);
+	const database = getDatabase(app);
+	const auth = getAuth();
+
+	// submit.addEventListener('click',async (e) => {
+
+		// var name = document.getElementById('name').value;
+		// var email = document.getElementById('email').value
+		// var pno = document.getElementById('pno').value
+		// var password = document.getElementById('password').value
+		// var conpass = document.getElementById('conpassword').value
+		// var dob = document.getElementById('dateofbirth').value
+		// var add1 = document.getElementById('add1').value
+		// var add2 = document.getElementById('add2').value
+
+		// createUserWithEmailAndPassword(auth, email, password)
+  		// 	.then((userCredential) => {
+    	// 	// Signed in 
+    	// 		const user = userCredential.user;
+
+		// 		set(ref(database, 'users/' + user.uid),{
+		// 			name: username,
+		// 			email: email
+		// 		})
+		// 		alert('User created!')
+    	// 		// ...
+  		// 	})
+  		// 	.catch((error) => {
+    	// 		const errorCode = error.code;
+    	// 		const errorMessage = error.message;
+
+		// 		alert(errorMessage);
+    	// 	// ..
+  		// 	});
+		// });
+
+		login.addEventListener('click',(e) =>{
+
+			var email = document.getElementById('email').value
+			var password = document.getElementById('password').value
+
+			signInWithEmailAndPassword(auth, email, password)
+  			.then((userCredential) => {
+    		// Signed in 
+    			const user = userCredential.user;
+
+				const dt = new Date();
+				update(ref(database, 'users/' + user.uid),{
+					last_login: dt,
+					
+				})
+
+				alert('User Logged in...!!!')
+				window.location.href="OrderDetails_distributor.html"
+
+    			// ...
+  			})
+  			.catch((error) => {
+    			const errorCode = error.code;
+    			const errorMessage = error.message;
+
+				alert(errorMessage);
+
+  			});
+		});
+
+		const user = auth.currentUser;
+		onAuthStateChanged(auth, (user) => {
+  		if (user) {
+    		// User is signed in, see docs for a list of available properties
+    		// https://firebase.google.com/docs/reference/js/firebase.User
+    		const uid = user.uid;
+			// window.location.href="OrderDetails_c_f.html"
+    		// ...
+  		} else {
+    		// User is signed out
+			alert('User credentials incorrect...!!!')
+    		// ...
+  		}
+});
+
+  </script>
+</html>

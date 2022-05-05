@@ -1,0 +1,61 @@
+#myNav .navbar-brand{
+	font-size: 40px;
+	margin-right: 60px;
+}
+#myNav .nav-item{
+	font-size: 20px;
+	margin-right: 55px;
+}
+#myNav .nav-item a{
+	color: #444444;
+}
+#myNav .nav-item .active, #myNav .nav-item a:hover{
+	color: #e2b13c;
+	transition: 0.9s;
+}
+#myNav .nav-item button{
+	border: 0px;
+	color: #fff;
+	padding: 7px,15px;
+	border-radius: 5px;
+}
+
+#login, #register:hover{
+	background: #444;
+	transition: 0.9s;
+}
+#register, #login:hover{
+	background: #e2b13c;
+	transition: 0.9s;
+}
+#exampleModal .modal-header, #exampleModal1 .modal-header{
+	background: #e2b13c;
+	color: #fff;
+}
+#carouselExampleCaptions .carousel-indicators button{
+			height: 5px;
+			width: 5px;
+			border: 3px solid #fff;
+			opacity: 1;
+			border-radius: 50%;
+			background: transparent;
+		}
+#carouselExampleCaptions .carousel-caption{
+			bottom: 55%;
+			text-align: center;
+
+		}
+#carouselExampleCaptions .carousel-indicators .active{
+			background: #fff;
+		}
+#carouselExampleCaptions .carousel-item h1{
+	font-size: 50px;
+	font-weight: 800px;
+}
+#carouselExampleCaptions .carousel-item button{
+	width: 150px;
+	height: 40px;
+	color: white;
+	border: 1px solid white;
+	letter-spacing: 1px;
+}
